@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.ardakazanci.mvvmexercise_1"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    def material_version = "1.0.0"
+    def lifecycle_version = "1.1.1"
+    def retrofit_version = "2.4.0"
+    def dagger2_version = "2.16"
+    def constraint_version = "1.1.3"
+    def core_version = "1.1.0"
+    def datab_compiler_version = "3.1.4"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    // Core
+    implementation "androidx.appcompat:appcompat:$core_version"
+    implementation "androidx.core:core-ktx:$core_version"
+
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+
+    // Material Design
+    implementation "com.google.android.material:material:$material_version"
+
+    // ViewModel - LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    kapt "com.android.databinding:compiler:$datab_compiler_version"
+
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.11"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
+
+
+
+}
